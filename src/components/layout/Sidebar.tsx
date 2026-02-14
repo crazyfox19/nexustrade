@@ -7,23 +7,28 @@ import { useUIStore } from '@/stores';
 import { useAlertsStore } from '@/stores';
 
 export function Sidebar() {
-  const { sidebarCollapsed, toggleSidebar } = useUIStore();
+  const { sidebarCollapsed, toggleSidebar, sidebarOpen, closeSidebar } = useUIStore();
   const unreadCount = useAlertsStore((s) => s.unreadCount);
   const location = useLocation();
 
   return (
     <>
-      {!sidebarCollapsed && (
+      {/* Mobile backdrop — only when sidebar is open on small screens */}
+      {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
-          onClick={toggleSidebar}
+          onClick={closeSidebar}
         />
       )}
 
       <motion.aside
         className={cn(
+          // Mobile: fixed, off-screen by default, slides in when open
           'fixed left-0 top-0 h-full z-50 bg-nexus-tertiary border-r border-[var(--bg-glass-border)] flex flex-col',
-          'lg:relative lg:z-auto'
+          'transition-transform duration-300 ease-in-out',
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full',
+          // Desktop: in-flow, always visible, no translate
+          'lg:relative lg:z-auto lg:translate-x-0'
         )}
         animate={{ width: sidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -60,6 +65,7 @@ export function Sidebar() {
                 <li key={item.path}>
                   <NavLink
                     to={item.path}
+                    onClick={closeSidebar}
                     className={cn(
                       'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 relative group',
                       isActive
@@ -110,6 +116,7 @@ export function Sidebar() {
                 <li key={item.path}>
                   <NavLink
                     to={item.path}
+                    onClick={closeSidebar}
                     className={cn(
                       'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200',
                       isActive
@@ -134,9 +141,10 @@ export function Sidebar() {
             })}
           </ul>
 
+          {/* Collapse toggle — desktop only */}
           <button
             onClick={toggleSidebar}
-            className="w-full flex items-center gap-3 px-3 py-2.5 mt-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-surface)] transition-all duration-200"
+            className="hidden lg:flex w-full items-center gap-3 px-3 py-2.5 mt-2 rounded-lg text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-surface)] transition-all duration-200"
           >
             {sidebarCollapsed ? (
               <ChevronRight className="w-5 h-5 flex-shrink-0" />

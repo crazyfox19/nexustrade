@@ -5,6 +5,9 @@ interface UIState {
   sidebarCollapsed: boolean;
   toggleSidebar: () => void;
   setSidebarCollapsed: (collapsed: boolean) => void;
+  sidebarOpen: boolean;
+  openSidebar: () => void;
+  closeSidebar: () => void;
   activeModal: string | null;
   openModal: (id: string) => void;
   closeModal: () => void;
@@ -17,6 +20,9 @@ export const useUIStore = create<UIState>((set) => ({
   sidebarCollapsed: false,
   toggleSidebar: () => set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed })),
   setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
+  sidebarOpen: false,
+  openSidebar: () => set({ sidebarOpen: true }),
+  closeSidebar: () => set({ sidebarOpen: false }),
   activeModal: null,
   openModal: (id) => set({ activeModal: id }),
   closeModal: () => set({ activeModal: null }),

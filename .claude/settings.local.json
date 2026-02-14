@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(npx tsc:*)",
+      "Bash(timeout 15 npx vite:*)",
+      "Bash(npm run build:*)",
+      "Bash(git init:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nPhase 1: Foundation — scaffold, design system, layout, routing, stores\n\n- Scaffold Vite + React + TypeScript project\n- Configure Tailwind CSS with NexusTradr design tokens \\(colors, fonts, shadows, glassmorphism\\)\n- Set up path aliases \\(@/ -> src/\\)\n- Create full TypeScript type system \\(8 type files covering all data models\\)\n- Create utility library \\(cn helper, motion variants, formatters, constants\\)\n- Create 8 Zustand stores with complete mock data matching PRD screenshots\n- Create 6 mock data files \\(portfolio, trades, markets, traders, alerts, FAQ\\)\n- Create 5 custom hooks \\(animated counter, media query, debounce, localStorage, intersection observer\\)\n- Create 11 shared components \\(GlassCard, PageWrapper, StatCard, PillBadge, AnimatedCounter, SearchInput, ToggleGroup, LiveIndicator, SkeletonLoader, EmptyState, ConfirmDialog\\)\n- Create 5 layout components \\(MainLayout, Sidebar, Header, TickerBar, Breadcrumbs\\)\n- Create 10 page stubs with PageWrapper transitions\n- Set up React Router with lazy loading and AnimatePresence page transitions\n- Add Google Fonts \\(Inter, JetBrains Mono, Space Grotesk\\)\n- Add CSS animations \\(ticker scroll, shimmer, neon pulse, price flash\\)\n- Zero TypeScript errors, clean production build \\(133KB gzipped\\)\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(dir:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nPhase 1: Foundation — scaffold, design system, layout, routing, stores\n\n- Scaffold Vite + React + TypeScript project\n- Configure Tailwind CSS with NexusTradr design tokens\n- Set up path aliases, strict TypeScript, Google Fonts\n- Create full type system \\(8 files covering all data models\\)\n- Create utility library \\(cn, motion variants, formatters, constants\\)\n- Create 8 Zustand stores with complete mock data matching PRD\n- Create 6 mock data files \\(portfolio, trades, markets, traders, alerts, FAQ\\)\n- Create 5 custom hooks \\(animated counter, media query, debounce, localStorage, intersection observer\\)\n- Create 11 shared components \\(GlassCard, StatCard, PillBadge, AnimatedCounter, etc.\\)\n- Create 5 layout components \\(MainLayout, Sidebar, Header, TickerBar, Breadcrumbs\\)\n- Create 10 page stubs with Framer Motion page transitions\n- Set up React Router with lazy loading and AnimatePresence\n- Add CSS animations \\(ticker scroll, shimmer, neon pulse, price flash\\)\n- Zero TypeScript errors, clean production build \\(133KB gzipped\\)\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout:*)",
+      "Bash(git remote:*)",
+      "Bash(gh auth status:*)",
+      "Bash(git pull:*)"
+    ]
+  }
+}

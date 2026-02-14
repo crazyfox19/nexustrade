@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { NAV_ITEMS, BOTTOM_NAV_ITEMS } from '@/lib/constants';
-import { useSettingsStore } from '@/stores';
+import { useSettingsStore, useUIStore } from '@/stores';
 
 const allNavItems = [...NAV_ITEMS, ...BOTTOM_NAV_ITEMS];
 
@@ -15,17 +15,27 @@ export function Header() {
   const location = useLocation();
   const pageTitle = getPageTitle(location.pathname);
   const profile = useSettingsStore((s) => s.profile);
+  const openSidebar = useUIStore((s) => s.openSidebar);
 
   return (
     <header className="h-16 flex items-center justify-between px-6 bg-nexus-secondary border-b border-[var(--bg-glass-border)] flex-shrink-0">
-      <div className="flex flex-col">
-        <h1 className="text-lg font-semibold text-[var(--text-primary)]">{pageTitle}</h1>
-        {location.pathname === '/' && (
-          <p className="text-xs text-[var(--text-secondary)]">
-            Welcome back, Alex. Your assets are performing{' '}
-            <span className="text-semantic-profit">+4.2%</span> better today.
-          </p>
-        )}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={openSidebar}
+          className="lg:hidden p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)] transition-colors"
+          aria-label="Open menu"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+        <div className="flex flex-col">
+          <h1 className="text-lg font-semibold text-[var(--text-primary)]">{pageTitle}</h1>
+          {location.pathname === '/' && (
+            <p className="text-xs text-[var(--text-secondary)]">
+              Welcome back, Alex. Your assets are performing{' '}
+              <span className="text-semantic-profit">+4.2%</span> better today.
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="flex items-center gap-4">
